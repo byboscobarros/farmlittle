@@ -25,6 +25,10 @@ open class Animal(
     @ManyToOne
     @JoinColumn(name = "breed_id", nullable = false)
     var breed: Breed,
+
+    @Enumerated(EnumType.STRING)
+    var gender: AnimalGender,
+
     createdAt: ZonedDateTime,
     updatedAt: ZonedDateTime
 ) : BaseModel(id, createdAt, updatedAt)

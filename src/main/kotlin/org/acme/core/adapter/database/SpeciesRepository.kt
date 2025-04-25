@@ -10,13 +10,17 @@ import java.util.UUID
 
 @ApplicationScoped
 class SpeciesRepository : ISpeciesRepository, PanacheRepository<Species> {
-    override fun findAll(): PanacheQuery<Species> = findAll()
+    override fun findAllSpecies(): PanacheQuery<Species> = findAll()
 
     override fun findById(id: UUID): Species? = find("id", id).firstResult()
 
     @Transactional
     override fun save(species: Species): Species {
-        persist(species)
+        if (species.id != null && findById(species.id!!) != null) {
+            getSession().merge(species)
+        } else {
+            persist(species)
+        }
         return species
     }
 
@@ -24,4 +28,5 @@ class SpeciesRepository : ISpeciesRepository, PanacheRepository<Species> {
     override fun deleteById(id: UUID) {
         delete("id", id)
     }
+
 }

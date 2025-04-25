@@ -13,8 +13,20 @@ abstract class BaseModel (
     val id: UUID,
 
     @Column(nullable = false)
-    val createdAt: ZonedDateTime = ZonedDateTime.now(),
+    var createdAt: ZonedDateTime? = null,
 
     @Column(nullable = false)
-    var updatedAt: ZonedDateTime = ZonedDateTime.now()
-)
+    var updatedAt: ZonedDateTime? = null
+) {
+    @PrePersist
+    fun onPrePersist() {
+        val now = ZonedDateTime.now()
+        createdAt = now
+        updatedAt = now
+    }
+
+    @PreUpdate
+    fun onPreUpdate() {
+        updatedAt = ZonedDateTime.now()
+    }
+}

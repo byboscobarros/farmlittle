@@ -5,7 +5,7 @@ import org.acme.core.model.Species
 import java.util.UUID
 
 interface ISpeciesRepository {
-    fun findAll(): PanacheQuery<Species>
+    fun findAllSpecies(): PanacheQuery<Species>
     fun findById(id: UUID): Species?
     fun save(species: Species): Species
     fun deleteById(id: UUID)

@@ -1,13 +1,18 @@
 package org.acme.core.adapter.services
 
+import jakarta.enterprise.context.ApplicationScoped
+import org.acme.core.model.Species
 import org.acme.core.port.`in`.ISpeciesService
 import org.acme.core.port.out.ISpeciesRepository
+import java.time.ZonedDateTime
+import java.util.*
 
+@ApplicationScoped
 class SpeciesService(
     private val speciesRepository: ISpeciesRepository
 ) : ISpeciesService {
     override fun getAllSpecies(): List<org.acme.core.model.Species> {
-        return speciesRepository.findAll().list()
+        return speciesRepository.findAllSpecies().list()
     }
 
     override fun getSpeciesById(id: java.util.UUID): org.acme.core.model.Species? {
@@ -20,5 +25,16 @@ class SpeciesService(
 
     override fun deleteSpeciesById(id: java.util.UUID) {
         speciesRepository.deleteById(id)
+    }
+
+    override fun updateSpecies(id: UUID, updatedSpecies: Species): Species? {
+        val existingSpecies = speciesRepository.findById(id)
+        return if (existingSpecies != null) {
+            existingSpecies.name = updatedSpecies.name
+            speciesRepository.save(existingSpecies)
+            existingSpecies
+        } else {
+            null
+        }
     }
 }
