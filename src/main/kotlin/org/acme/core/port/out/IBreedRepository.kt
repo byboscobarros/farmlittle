@@ -5,7 +5,7 @@ import org.acme.core.model.Breed
 import java.util.*
 
 interface IBreedRepository {
-    fun findAll(): PanacheQuery<Breed>
+    fun findAllBreeds(): PanacheQuery<Breed>
     fun findById(id: UUID): Breed?
     fun save(breed: Breed): Breed
     fun deleteById(id: UUID)

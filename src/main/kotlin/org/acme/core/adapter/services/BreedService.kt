@@ -9,7 +9,7 @@ import java.util.*
 @ApplicationScoped
 class BreedService(private val breedRepository: IBreedRepository) : IBreedService {
     override fun getAllBreeds(): List<Breed> {
-        return breedRepository.findAll().list()
+        return breedRepository.findAllBreeds().list()
     }
 
     override fun getBreedById(id: UUID): Breed? {
@@ -22,6 +22,17 @@ class BreedService(private val breedRepository: IBreedRepository) : IBreedServic
 
     override fun deleteBreedById(id: UUID) {
         breedRepository.deleteById(id)
+    }
+
+    override fun updateBreed(id: UUID, updatedBreed: Breed): Breed? {
+        val existingBreed = breedRepository.findById(id)
+//        existingBreed?.species
+        return if (existingBreed != null) {
+            existingBreed.name = updatedBreed.name
+            existingBreed
+        } else {
+            null
+        }
     }
 
 }

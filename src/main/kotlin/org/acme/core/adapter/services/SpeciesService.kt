@@ -1,6 +1,7 @@
 package org.acme.core.adapter.services
 
 import jakarta.enterprise.context.ApplicationScoped
+import jakarta.transaction.Transactional
 import org.acme.core.model.Species
 import org.acme.core.port.`in`.ISpeciesService
 import org.acme.core.port.out.ISpeciesRepository
@@ -15,6 +16,7 @@ class SpeciesService(
         return speciesRepository.findAllSpecies().list()
     }
 
+    @Transactional
     override fun getSpeciesById(id: java.util.UUID): org.acme.core.model.Species? {
         return speciesRepository.findById(id)
     }
@@ -27,11 +29,12 @@ class SpeciesService(
         speciesRepository.deleteById(id)
     }
 
+    @Transactional
     override fun updateSpecies(id: UUID, updatedSpecies: Species): Species? {
         val existingSpecies = speciesRepository.findById(id)
+        existingSpecies?.breeds?.size
         return if (existingSpecies != null) {
             existingSpecies.name = updatedSpecies.name
-            speciesRepository.save(existingSpecies)
             existingSpecies
         } else {
             null

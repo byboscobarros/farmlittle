@@ -13,7 +13,7 @@ class Breed(
     var name: String,
 
     @ManyToOne
-    @JoinColumn(name = "species_id")
+    @JoinColumn(name = "species_id", nullable = false)
     var species: Species,
     createdAt: ZonedDateTime,
     updatedAt: ZonedDateTime

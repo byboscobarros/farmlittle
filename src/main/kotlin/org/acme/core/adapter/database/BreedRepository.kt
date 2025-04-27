@@ -10,7 +10,7 @@ import java.util.*
 
 @ApplicationScoped
 class BreedRepository : IBreedRepository, PanacheRepository<Breed> {
-    override fun findAll(): PanacheQuery<Breed> = findAll()
+    override fun findAllBreeds(): PanacheQuery<Breed> = findAll()
 
     override fun findById(id: UUID): Breed? = find("id", id).firstResult()
 

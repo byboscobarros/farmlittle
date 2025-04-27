@@ -16,11 +16,7 @@ class SpeciesRepository : ISpeciesRepository, PanacheRepository<Species> {
 
     @Transactional
     override fun save(species: Species): Species {
-        if (species.id != null && findById(species.id!!) != null) {
-            getSession().merge(species)
-        } else {
-            persist(species)
-        }
+        persist(species)
         return species
     }
 
