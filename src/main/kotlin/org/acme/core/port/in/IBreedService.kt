@@ -9,4 +9,5 @@ interface IBreedService {
     fun saveBreed(breed: Breed): Breed
     fun deleteBreedById(id: UUID)
     fun updateBreed(id: UUID, updatedBreed: Breed): Breed?
+    fun getBreedsBySpeciesId(speciesId: UUID?): List<Breed>
 }

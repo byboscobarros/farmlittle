@@ -10,7 +10,7 @@ abstract class BaseModel (
     @Id
     @Column(columnDefinition = "uuid")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: UUID,
+    val id: UUID? = null,
 
     @Column(nullable = false)
     var createdAt: ZonedDateTime? = null,

@@ -4,6 +4,8 @@ plugins {
     id "org.jetbrains.kotlin.plugin.noarg" version "2.1.20"
     id "org.jetbrains.kotlin.plugin.jpa" version "2.1.20"
     id 'io.quarkus'
+    id 'org.jetbrains.kotlin.plugin.lombok' version '2.1.20'
+    id 'io.freefair.lombok' version '8.13'
 }
 
 repositories {
@@ -22,6 +24,8 @@ dependencies {
     implementation 'io.quarkus:quarkus-hibernate-orm-panache-kotlin'
     implementation 'io.quarkus:quarkus-jdbc-postgresql'
     implementation 'org.projectlombok:lombok:1.18.24'
+    implementation 'io.quarkus:quarkus-hibernate-validator'
+    implementation 'jakarta.validation:jakarta.validation-api:2.0.2'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'

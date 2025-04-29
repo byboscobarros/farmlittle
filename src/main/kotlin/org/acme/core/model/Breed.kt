@@ -7,14 +7,14 @@ import java.util.*
 @Entity
 @Table(name = "breeds")
 class Breed(
-    id: UUID,
+    id: UUID?,
 
     @Column(nullable = false)
     var name: String,
 
     @ManyToOne
     @JoinColumn(name = "species_id", nullable = false)
-    var species: Species,
-    createdAt: ZonedDateTime,
-    updatedAt: ZonedDateTime
+    var species: Species?,
+    createdAt: ZonedDateTime?,
+    updatedAt: ZonedDateTime?
 ) : BaseModel(id, createdAt, updatedAt)

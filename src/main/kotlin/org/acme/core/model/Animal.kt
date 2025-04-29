@@ -16,7 +16,7 @@ open class Animal(
 
     @Column(nullable = false)
     var dob: Date,
-    var aproximateAge: Boolean = false,
+    var approximateAge: Boolean = false,
 
     @ManyToOne
     @JoinColumn(name = "species_id", nullable = false)
