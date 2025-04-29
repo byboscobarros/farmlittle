@@ -6,7 +6,7 @@ import java.util.*
 
 interface IBreedRepository {
     fun findAllBreeds(): PanacheQuery<Breed>
-    fun findById(id: UUID): Breed?
+    fun findById(id: UUID?): Breed?
     fun save(breed: Breed): Breed
     fun deleteById(id: UUID)
     fun getBreedsBySpeciesId(speciesId: UUID?): List<Breed>

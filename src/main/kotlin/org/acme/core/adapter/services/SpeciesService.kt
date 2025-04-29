@@ -17,7 +17,7 @@ class SpeciesService(
     }
 
     @Transactional
-    override fun getSpeciesById(id: java.util.UUID): org.acme.core.model.Species? {
+    override fun getSpeciesById(id: java.util.UUID?): org.acme.core.model.Species? {
         return speciesRepository.findById(id)
     }
 

@@ -9,26 +9,26 @@ import java.util.*
 @Table(name = "animals")
 @NoArgsConstructor
 open class Animal(
-    id: UUID,
+    id: UUID?,
 
     @Column(nullable = false)
     var name: String,
 
     @Column(nullable = false)
-    var dob: Date,
-    var approximateAge: Boolean = false,
+    var dob: Date?,
+    var approximateAge: Boolean? = false,
 
     @ManyToOne
     @JoinColumn(name = "species_id", nullable = false)
-    var species: Species,
+    var species: Species?,
 
     @ManyToOne
     @JoinColumn(name = "breed_id", nullable = false)
-    var breed: Breed,
+    var breed: Breed?,
 
     @Enumerated(EnumType.STRING)
     var gender: AnimalGender,
 
-    createdAt: ZonedDateTime,
-    updatedAt: ZonedDateTime
+    createdAt: ZonedDateTime?,
+    updatedAt: ZonedDateTime?
 ) : BaseModel(id, createdAt, updatedAt)

@@ -6,7 +6,7 @@ import java.util.*
 
 interface IAnimalRepository {
     fun findAll(): PanacheQuery<Animal>
-    fun findById(id: UUID): Animal?
+    fun findById(id: UUID?): Animal?
     fun save(animal: Animal): Animal
     fun deleteById(id: UUID)
     fun listAllAnimals(): List<Animal>

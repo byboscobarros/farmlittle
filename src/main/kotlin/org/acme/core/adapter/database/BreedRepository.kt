@@ -13,7 +13,7 @@ import java.util.*
 class BreedRepository : IBreedRepository, PanacheRepository<Breed> {
     override fun findAllBreeds(): PanacheQuery<Breed> = findAll()
 
-    override fun findById(id: UUID): Breed? = find("id", id).firstResult()
+    override fun findById(id: UUID?): Breed? = find("id", id).firstResult()
 
     @Transactional
     override fun save(breed: Breed): Breed {

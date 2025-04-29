@@ -9,6 +9,6 @@ interface IAnimalResponseDTO : IBaseResponseDTO {
     var name: String
     var dob: Date?
     var approximateAge: Boolean
-    var species: SpeciesResponseDTO
-    var breed: BreedResponseDTO
+    var species: ISpeciesResponseDTO?
+    var breed: IBreedResponseDTO?
 }

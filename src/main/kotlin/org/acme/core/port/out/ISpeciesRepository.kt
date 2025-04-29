@@ -6,7 +6,7 @@ import java.util.UUID
 
 interface ISpeciesRepository {
     fun findAllSpecies(): PanacheQuery<Species>
-    fun findById(id: UUID): Species?
+    fun findById(id: UUID?): Species?
     fun save(species: Species): Species
     fun deleteById(id: UUID)
 }

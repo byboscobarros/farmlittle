@@ -13,7 +13,7 @@ class BreedService(private val breedRepository: IBreedRepository) : IBreedServic
         return breedRepository.findAllBreeds().list()
     }
 
-    override fun getBreedById(id: UUID): Breed? {
+    override fun getBreedById(id: UUID?): Breed? {
         return breedRepository.findById(id)
     }
 

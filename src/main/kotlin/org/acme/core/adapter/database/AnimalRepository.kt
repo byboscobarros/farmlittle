@@ -12,7 +12,7 @@ import java.util.*
 class AnimalRepository : IAnimalRepository, PanacheRepository<Animal> {
     override fun findAll(): PanacheQuery<Animal> = super.findAll()
 
-    override fun findById(id: UUID): Animal? = find("id", id).firstResult()
+    override fun findById(id: UUID?): Animal? = find("id", id).firstResult()
 
     @Transactional
     override fun save(animal: Animal): Animal {
