@@ -12,7 +12,10 @@ import java.util.UUID
 class SpeciesRepository : ISpeciesRepository, PanacheRepository<Species> {
     override fun findAllSpecies(): PanacheQuery<Species> = findAll()
 
-    override fun findById(id: UUID): Species? = find("id", id).firstResult()
+    override fun findById(id: UUID?): Species? {
+        return find("id", id).firstResult()
+    }
+
 
     @Transactional
     override fun save(species: Species): Species {

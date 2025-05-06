@@ -11,5 +11,5 @@ data class SpeciesRequestDTO(
 
     @field:NotEmpty(message = "Name is required")
     @field:Size(min = 1, max = 255, message = "Name must be between 1 and 255 characters")
-    override var name: String
+    override var name: String?
 ) : ISpeciesRequestDTO

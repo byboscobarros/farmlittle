@@ -4,5 +4,5 @@ import java.util.*
 
 interface ISpeciesRequestDTO {
     val id: UUID?
-    var name: String
+    var name: String?
 }

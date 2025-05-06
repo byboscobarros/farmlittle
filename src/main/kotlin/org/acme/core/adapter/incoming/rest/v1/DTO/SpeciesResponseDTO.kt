@@ -8,7 +8,7 @@ import java.util.*
 
 data class SpeciesResponseDTO(
     override val id: UUID,
-    override var name: String,
+    override var name: String?,
     override var createdAt: ZonedDateTime?,
     override var updatedAt: ZonedDateTime?
 ) : ISpeciesResponseDTO

@@ -4,6 +4,6 @@ import java.util.*
 
 interface IBreedRequestDTO {
     val id: UUID?
-    var name: String
-    var speciesId: UUID
+    var name: String?
+    var speciesId: UUID?
 }

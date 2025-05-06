@@ -5,11 +5,8 @@ import jakarta.validation.Valid
 import jakarta.ws.rs.*
 import jakarta.ws.rs.core.Response
 import org.acme.core.adapter.incoming.rest.v1.DTO.SpeciesRequestDTO
-import org.acme.core.adapter.services.BreedService
 import org.acme.core.adapter.services.mapper.ISpeciesResponseDTO
 import org.acme.core.adapter.services.mapper.SpeciesMapper
-import org.acme.core.model.Species
-import org.acme.core.port.`in`.IBreedService
 import org.acme.core.port.`in`.ISpeciesService
 import java.util.*
 
@@ -24,12 +21,12 @@ class SpeciesController (
 
     @GET
     @Path("/{id}")
-    fun getById(@PathParam("id") id: UUID): ISpeciesResponseDTO? {
+    fun getById(@PathParam("id") id: UUID): Response {
         val species = speciesService.getSpeciesById(id)
         if(species != null) {
-            return speciesMapper.toDto(species)
+            return Response.status(Response.Status.OK).entity(speciesMapper.toDto(species)).build()
         }
-        return null
+        return Response.status(Response.Status.NOT_FOUND).build()
     }
 
     @POST

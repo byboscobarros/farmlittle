@@ -26,7 +26,7 @@ class BreedMapper (
     fun toDto(entity: Breed): IBreedResponseDTO {
         return object : IBreedResponseDTO {
             override val id: UUID? = entity.id
-            override var name: String = entity.name
+            override var name: String? = entity.name
             override var species: ISpeciesResponseDTO? = entity.species?.let { species ->
                 SpeciesResponseDTO(
                     id = species.id!!,

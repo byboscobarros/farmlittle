@@ -12,7 +12,7 @@ open class Animal(
     id: UUID?,
 
     @Column(nullable = false)
-    var name: String,
+    var name: String?,
 
     @Column(nullable = false)
     var dob: Date?,
@@ -27,7 +27,7 @@ open class Animal(
     var breed: Breed?,
 
     @Enumerated(EnumType.STRING)
-    var gender: AnimalGender,
+    var gender: AnimalGender?,
 
     createdAt: ZonedDateTime?,
     updatedAt: ZonedDateTime?

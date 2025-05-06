@@ -1,6 +1,7 @@
 package org.acme.core.adapter.services
 
 import jakarta.enterprise.context.ApplicationScoped
+import jakarta.transaction.Transactional
 import org.acme.core.adapter.database.AnimalRepository
 import org.acme.core.model.Animal
 import org.acme.core.port.`in`.IAnimalService
@@ -27,5 +28,17 @@ class AnimalService(
 
     override fun deleteAnimalById(id: UUID) {
         animalRepository.deleteById(id)
+    }
+
+    @Transactional
+    override fun updateAnimal(id: UUID, updatedAnimal: Animal): Animal? {
+        val existingAnimal = animalRepository.findById(id)
+        return if (existingAnimal != null) {
+            existingAnimal.name = updatedAnimal.name
+//            existingAnimal.breed = breedService.getBreedById(updatedAnimal.breed?.id)
+            existingAnimal
+        } else {
+            null
+        }
     }
 }

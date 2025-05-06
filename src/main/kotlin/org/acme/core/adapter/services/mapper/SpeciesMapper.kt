@@ -27,7 +27,7 @@ class SpeciesMapper (
     fun toDto(entity: Species): ISpeciesResponseDTO {
         return object : ISpeciesResponseDTO {
             override val id: UUID? = entity.id
-            override var name: String = entity.name
+            override var name: String? = entity.name
             override var createdAt: ZonedDateTime? = entity.createdAt
             override var updatedAt: ZonedDateTime? = entity.updatedAt
         }

@@ -4,5 +4,5 @@ import java.util.UUID
 
 interface ISpeciesResponseDTO : IBaseResponseDTO {
     val id: UUID?
-    var name: String
+    var name: String?
 }

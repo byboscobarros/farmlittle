@@ -8,4 +8,5 @@ interface IAnimalService {
     fun getAnimalById(id: UUID): Animal?
     fun saveAnimal(animal: Animal): Animal
     fun deleteAnimalById(id: UUID)
+    fun updateAnimal(id: UUID, updatedAnimal: Animal): Animal?
 }

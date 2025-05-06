@@ -12,8 +12,8 @@ data class BreedRequestDTO (
     @field:NotEmpty(message = "Name is required")
     @field:NotNull(message = "Name is required")
     @field:Size(min = 1, max = 255, message = "Name must be between 1 and 255 characters")
-    override var name: String,
+    override var name: String?,
 
-    @field:NotNull
-    override var speciesId: UUID
+    @field:NotNull(message = "Species ID is required")
+    override var speciesId: UUID?
 ) : IBreedRequestDTO

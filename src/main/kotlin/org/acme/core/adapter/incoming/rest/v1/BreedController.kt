@@ -22,12 +22,12 @@ class BreedController (
 
     @GET
     @Path("/{id}")
-    fun getById(@PathParam("id") id: java.util.UUID): IBreedResponseDTO? {
+    fun getById(@PathParam("id") id: java.util.UUID): Response {
         val breed = breedService.getBreedById(id)
         if(breed != null) {
-            return breedMapper.toDto(breed)
+            return Response.status(Response.Status.OK).entity(breedMapper.toDto(breed)).build()
         }
-        return null
+        return Response.status(Response.Status.NOT_FOUND).build()
     }
 
     @POST

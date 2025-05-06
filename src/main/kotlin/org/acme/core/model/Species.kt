@@ -14,7 +14,7 @@ class Species(
     id: UUID?,
 
     @Column(nullable = false)
-    var name: String,
+    var name: String?,
 
     @OneToMany(mappedBy = "species", cascade = [CascadeType.ALL], orphanRemoval = true)
     var breeds: MutableList<Breed> = mutableListOf(),

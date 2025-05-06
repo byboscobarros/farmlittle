@@ -10,7 +10,7 @@ class Breed(
     id: UUID?,
 
     @Column(nullable = false)
-    var name: String,
+    var name: String?,
 
     @ManyToOne
     @JoinColumn(name = "species_id", nullable = false)
