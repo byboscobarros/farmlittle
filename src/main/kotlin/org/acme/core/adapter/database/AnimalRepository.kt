@@ -21,7 +21,7 @@ class AnimalRepository : IAnimalRepository, PanacheRepository<Animal> {
     }
 
     @Transactional
-    override fun deleteById(id: UUID) {
+    override void fun deleteById(id: UUID) {
         delete("id", id)
     }
 
